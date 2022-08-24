@@ -1,5 +1,4 @@
 import { FC, useState } from "react";
-import { Frame, List, Modal } from "@react95/core";
 import styled from "styled-components";
 
 import { IIconComponent } from "../utils/interfaces";
