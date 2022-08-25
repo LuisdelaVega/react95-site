@@ -22,7 +22,7 @@ export const Window: FC<IWindow> = ({
     <Modal
       width="300"
       height="200"
-      icon={<Icon variant="32x32_4" />}
+      icon={<Icon variant="16x16_4" />}
       title={title}
       defaultPosition={{
         x: 0,
