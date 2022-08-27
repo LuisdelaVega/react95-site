@@ -9,8 +9,14 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: fit-content;
   row-gap: 5px;
+  width: 75px;
+  height: 50px;
+
+  span {
+    text-align: center;
+    color: white;
+  }
 `;
 
 interface IShortcut {
