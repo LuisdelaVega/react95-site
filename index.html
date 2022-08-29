@@ -3,11 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="clippy/build/clippy.css"
+      media="all"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>React95 Site</title>
   </head>
   <body>
     <div id="root"></div>
+    <script src="https://unpkg.com/jquery@3.2.1"></script>
+    <script src="clippy/build/clippy.min.js"></script>
+    <script type="text/javascript">
+      window.CLIPPY = clippy;
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

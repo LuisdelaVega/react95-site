@@ -1,4 +1,5 @@
-import { ThemeProvider, GlobalStyle } from "@react95/core";
+import { useEffect, useRef } from "react";
+import { ThemeProvider, GlobalStyle, Button } from "@react95/core";
 import { Computer, Network2, Notepad } from "@react95/icons";
 import styled from "@xstyled/styled-components";
 
@@ -22,6 +23,17 @@ const ShortcutGrid = styled.div`
 `;
 
 function App() {
+  const clippyRef = useRef<any>((window as any).CLIPPY);
+  const agentRef = useRef<any>();
+
+  useEffect(() => {
+    clippyRef.current.load("Clippy", function (agent: any) {
+      // Do anything with the loaded agent
+      agent.show();
+      agentRef.current = agent;
+    });
+  }, []);
+
   return (
     <ThemeProvider>
       <GlobalStyle />
@@ -30,24 +42,10 @@ function App() {
           <Shortcut icon={Computer} title="My Computer" />
           <Shortcut icon={Network2} title="Network Neighborhood" />
           <Shortcut icon={Notepad} title="Notepad" />
-          <Shortcut icon={Computer} title="My Computer" />
-          <Shortcut icon={Network2} title="Network Neighborhood" />
-          <Shortcut icon={Notepad} title="Notepad" />
-          <Shortcut icon={Computer} title="My Computer" />
-          <Shortcut icon={Network2} title="Network Neighborhood" />
-          <Shortcut icon={Notepad} title="Notepad" />
-          <Shortcut icon={Computer} title="My Computer" />
-          <Shortcut icon={Network2} title="Network Neighborhood" />
-          <Shortcut icon={Notepad} title="Notepad" />
-          <Shortcut icon={Computer} title="My Computer" />
-          <Shortcut icon={Network2} title="Network Neighborhood" />
-          <Shortcut icon={Notepad} title="Notepad" />
-          <Shortcut icon={Computer} title="My Computer" />
-          <Shortcut icon={Network2} title="Network Neighborhood" />
-          <Shortcut icon={Notepad} title="Notepad" />
-          <Shortcut icon={Computer} title="My Computer" />
-          <Shortcut icon={Network2} title="Network Neighborhood" />
-          <Shortcut icon={Notepad} title="Notepad" />
+          <Button onClick={() => agentRef.current?.play("Searching")}>
+            Hello Clippy!
+          </Button>
+          ;
         </ShortcutGrid>
       </Desktop>
       <TaskBar />
