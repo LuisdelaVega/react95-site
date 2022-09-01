@@ -1,7 +1,9 @@
 import { FC } from "react";
 import { Frame, List, Modal } from "@react95/core";
 
-import { IIconComponent } from "../utils/interfaces";
+import classes from "./Window.module.css";
+
+import { IIconComponent } from "../../utils/interfaces";
 
 interface IWindow {
   handleCloseModal: () => void;
@@ -20,6 +22,7 @@ export const Window: FC<IWindow> = ({
 
   return (
     <Modal
+      className={classes.Window}
       width="300"
       height="200"
       icon={<Icon variant="16x16_4" />}
@@ -52,7 +55,19 @@ export const Window: FC<IWindow> = ({
         },
       ]}
     >
-      <Frame bg="white" boxShadow="in" h="100%" w="100%" padding="0px 5px">
+      <Frame
+        bg="white"
+        boxShadow="in"
+        h="100%"
+        w="100%"
+        padding="0px 5px"
+        overflowY="auto"
+      >
+        <p>
+          The active modal will be based on the order they render, most recently
+          rendered will be the active component. On click of a non-active modal
+          will fire an action to set that modal as the active one.
+        </p>
         <p>
           The active modal will be based on the order they render, most recently
           rendered will be the active component. On click of a non-active modal

@@ -45,7 +45,6 @@ function App() {
           <Button onClick={() => agentRef.current?.play("Searching")}>
             Hello Clippy!
           </Button>
-          ;
         </ShortcutGrid>
       </Desktop>
       <TaskBar />
