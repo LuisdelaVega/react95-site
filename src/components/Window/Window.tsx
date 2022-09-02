@@ -1,9 +1,11 @@
 import { FC } from "react";
 import { Frame, List, Modal } from "@react95/core";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 import classes from "./Window.module.css";
-
-import { IIconComponent } from "../../utils/interfaces";
+import { IIconComponent } from "../../types/interfaces";
+import * as Posts from "../../assets/posts";
 
 interface IWindow {
   handleCloseModal: () => void;
@@ -63,16 +65,10 @@ export const Window: FC<IWindow> = ({
         padding="0px 5px"
         overflowY="auto"
       >
-        <p>
-          The active modal will be based on the order they render, most recently
-          rendered will be the active component. On click of a non-active modal
-          will fire an action to set that modal as the active one.
-        </p>
-        <p>
-          The active modal will be based on the order they render, most recently
-          rendered will be the active component. On click of a non-active modal
-          will fire an action to set that modal as the active one.
-        </p>
+        <ReactMarkdown
+          children={Posts.First_post}
+          remarkPlugins={[remarkGfm]}
+        />
       </Frame>
     </Modal>
   );

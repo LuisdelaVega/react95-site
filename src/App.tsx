@@ -27,7 +27,7 @@ function App() {
   const agentRef = useRef<any>();
 
   useEffect(() => {
-    clippyRef.current.load("Clippy", function (agent: any) {
+    clippyRef.current.load("Genius", function (agent: any) {
       // Do anything with the loaded agent
       agent.show();
       agentRef.current = agent;
@@ -42,7 +42,12 @@ function App() {
           <Shortcut icon={Computer} title="My Computer" />
           <Shortcut icon={Network2} title="Network Neighborhood" />
           <Shortcut icon={Notepad} title="Notepad" />
-          <Button onClick={() => agentRef.current?.play("Searching")}>
+          <Button
+            onClick={() => {
+              agentRef.current?.stop();
+              agentRef.current?.animate();
+            }}
+          >
             Hello Clippy!
           </Button>
         </ShortcutGrid>

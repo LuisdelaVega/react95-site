@@ -1,7 +1,7 @@
 import { FC } from "react";
 import styled from "@xstyled/styled-components";
 
-import { IIconComponent } from "../utils/interfaces";
+import { IIconComponent } from "../types/interfaces";
 import { useModalToggle } from "../hooks/useModalToggle";
 import { Window } from "./Window";
 
