@@ -1,11 +1,10 @@
-import { useEffect, useRef } from "react";
-import { ThemeProvider, GlobalStyle, Button } from "@react95/core";
+import { Button, GlobalStyle, ThemeProvider } from "@react95/core";
 import { Computer, Network2, Notepad } from "@react95/icons";
-import styled from "@xstyled/styled-components";
-
-import { Shortcut, TaskBar } from "./components";
-
 import "@react95/icons/icons.css";
+import styled from "@xstyled/styled-components";
+import { Shortcut, TaskBar } from "./components";
+import { AGENT_NAMES, useClippy } from "./hooks/useClippy";
+import { CLIPPY_ANIMATIONS } from "./utils/clippyAnimations";
 
 const Desktop = styled.div`
   padding: 10px;
@@ -23,16 +22,7 @@ const ShortcutGrid = styled.div`
 `;
 
 function App() {
-  const clippyRef = useRef<any>((window as any).CLIPPY);
-  const agentRef = useRef<any>();
-
-  useEffect(() => {
-    clippyRef.current.load("Genius", function (agent: any) {
-      // Do anything with the loaded agent
-      agent.show();
-      agentRef.current = agent;
-    });
-  }, []);
+  const { agentRef } = useClippy(AGENT_NAMES.Clippy);
 
   return (
     <ThemeProvider>
@@ -45,7 +35,7 @@ function App() {
           <Button
             onClick={() => {
               agentRef.current?.stop();
-              agentRef.current?.animate();
+              agentRef.current?.play(CLIPPY_ANIMATIONS.Print);
             }}
           >
             Hello Clippy!

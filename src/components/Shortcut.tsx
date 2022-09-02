@@ -1,8 +1,7 @@
-import { FC } from "react";
 import styled from "@xstyled/styled-components";
-
-import { IIconComponent } from "../types/interfaces";
+import { FC } from "react";
 import { useModalToggle } from "../hooks/useModalToggle";
+import { IIconComponent } from "../types/interfaces";
 import { Window } from "./Window";
 
 const Wrapper = styled.div`

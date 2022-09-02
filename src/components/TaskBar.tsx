@@ -1,8 +1,7 @@
 import { List, TaskBar as React95TaskBar } from "@react95/core";
 import { WindowsExplorer } from "@react95/icons";
-
-import { Window } from "./Window";
 import { useModalToggle } from "../hooks/useModalToggle";
+import { Window } from "./Window";
 
 export const TaskBar = () => {
   const [isWinExplorerOpen, openWinExplorer, closeWinExplorer] =

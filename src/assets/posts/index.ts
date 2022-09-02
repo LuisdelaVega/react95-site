@@ -1,3 +1,3 @@
-import First_post from "./FirstPost";
+import Devlog_0 from "./Devlog_0";
 
-export { First_post };
+export { Devlog_0 };

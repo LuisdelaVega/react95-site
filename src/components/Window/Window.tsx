@@ -1,11 +1,10 @@
-import { FC } from "react";
 import { Frame, List, Modal } from "@react95/core";
+import { FC } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-
-import classes from "./Window.module.css";
-import { IIconComponent } from "../../types/interfaces";
 import * as Posts from "../../assets/posts";
+import { IIconComponent } from "../../types/interfaces";
+import classes from "./Window.module.css";
 
 interface IWindow {
   handleCloseModal: () => void;
@@ -25,8 +24,8 @@ export const Window: FC<IWindow> = ({
   return (
     <Modal
       className={classes.Window}
-      width="300"
-      height="200"
+      width="550"
+      height="500"
       icon={<Icon variant="16x16_4" />}
       title={title}
       defaultPosition={{
@@ -65,10 +64,7 @@ export const Window: FC<IWindow> = ({
         padding="0px 5px"
         overflowY="auto"
       >
-        <ReactMarkdown
-          children={Posts.First_post}
-          remarkPlugins={[remarkGfm]}
-        />
+        <ReactMarkdown children={Posts.Devlog_0} remarkPlugins={[remarkGfm]} />
       </Frame>
     </Modal>
   );
