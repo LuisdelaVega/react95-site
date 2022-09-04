@@ -4,8 +4,11 @@ import { useModalToggle } from "../hooks/useModalToggle";
 import { Window } from "./Window";
 
 export const TaskBar = () => {
-  const [isWinExplorerOpen, openWinExplorer, closeWinExplorer] =
-    useModalToggle(false);
+  const {
+    isModalOpen: isWinExplorerOpen,
+    openModal: openWinExplorer,
+    closeModal: closeWinExplorer,
+  } = useModalToggle(false);
 
   return (
     <>

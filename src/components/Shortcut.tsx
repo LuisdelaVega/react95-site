@@ -1,8 +1,7 @@
+import React, { ReactElement } from "react";
 import styled from "@xstyled/styled-components";
-import { FC } from "react";
 import { useModalToggle } from "../hooks/useModalToggle";
 import { IIconComponent } from "../types/interfaces";
-import { Window } from "./Window";
 
 const Wrapper = styled.div`
   display: flex;
@@ -19,17 +18,25 @@ const Wrapper = styled.div`
 `;
 
 interface IShortcut {
+  children: ReactElement;
+  closeModal: () => void;
   icon: IIconComponent;
+  isModalOpen: boolean;
+  openModal: () => void;
   title: string;
 }
 
-export const Shortcut: FC<IShortcut> = (props) => {
-  const { icon: Icon, title } = props;
-  const [isModalOpen, openModal, closeModal] = useModalToggle(false);
-
+export const Shortcut: React.FC<IShortcut> = ({
+  children,
+  closeModal,
+  icon: Icon,
+  isModalOpen,
+  openModal,
+  title,
+}) => {
   return (
     <>
-      {isModalOpen && <Window handleCloseModal={closeModal} {...props} />}
+      {isModalOpen && React.cloneElement(children, { closeModal })}
 
       <Wrapper onClick={openModal}>
         <Icon variant="32x32_4" />

@@ -1,5 +1,4 @@
 import { Frame, List, Modal } from "@react95/core";
-import { FC } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import * as Posts from "../../assets/posts";
@@ -12,7 +11,7 @@ interface IWindow {
   title: string;
 }
 
-export const Window: FC<IWindow> = ({
+export const Window: React.FC<IWindow> = ({
   handleCloseModal,
   icon: Icon,
   title,

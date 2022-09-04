@@ -3,6 +3,7 @@ import { Computer, Network2, Notepad } from "@react95/icons";
 import "@react95/icons/icons.css";
 import styled from "@xstyled/styled-components";
 import { Shortcut, TaskBar } from "./components";
+import { Devlogs } from "./features/Devlogs";
 import { AGENT_NAMES, useClippy } from "./hooks/useClippy";
 import { CLIPPY_ANIMATIONS } from "./utils/clippyAnimations";
 
@@ -29,9 +30,7 @@ function App() {
       <GlobalStyle />
       <Desktop>
         <ShortcutGrid>
-          <Shortcut icon={Computer} title="My Computer" />
-          <Shortcut icon={Network2} title="Network Neighborhood" />
-          <Shortcut icon={Notepad} title="Notepad" />
+          <Devlogs />
           <Button
             onClick={() => {
               agentRef.current?.stop();

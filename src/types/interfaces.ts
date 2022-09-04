@@ -1,4 +1,2 @@
-import { FC } from "react";
-
 // TODO Type this better
-export interface IIconComponent extends FC<any> {}
+export interface IIconComponent extends React.FC<any> {}
