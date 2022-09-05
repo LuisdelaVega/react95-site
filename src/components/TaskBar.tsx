@@ -13,6 +13,7 @@ export const TaskBar = () => {
   return (
     <>
       {isWinExplorerOpen && (
+        // TODO Switch this use of Window for a Modal or a component that wraps it.
         <Window
           handleCloseModal={closeWinExplorer}
           icon={WindowsExplorer}

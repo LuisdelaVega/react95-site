@@ -1,3 +1,4 @@
+// TODO Delete this component
 import { Frame, List, Modal } from "@react95/core";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -11,6 +12,13 @@ interface IWindow {
   title: string;
 }
 
+/**
+ * @deprecated
+ *
+ * DO NOT USE THIS COMPONENT. IT WILL BE DELETED SOON
+ * @param param0
+ * @returns
+ */
 export const Window: React.FC<IWindow> = ({
   handleCloseModal,
   icon: Icon,
