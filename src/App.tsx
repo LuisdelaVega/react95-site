@@ -5,15 +5,10 @@ import { TaskBar } from "./components";
 import { Devlogs } from "./features/Devlogs";
 import { AGENT_NAMES, useClippy } from "./hooks/useClippy";
 import { CLIPPY_ANIMATIONS } from "./utils/clippyAnimations";
+import { ShortcutGrid } from "./utils/styledComponents";
 
-const Desktop = styled.div`
-  padding: 10px;
+const Desktop = styled(ShortcutGrid)`
   height: calc(100vh - 30px);
-  display: flex;
-  flex-flow: column wrap;
-  align-content: flex-start;
-  row-gap: 30px;
-  column-gap: 5px;
 `;
 
 function App() {

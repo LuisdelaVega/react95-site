@@ -1,26 +1,24 @@
 import { Frame, List } from "@react95/core";
-import { Folder } from "@react95/icons";
+import { FileText, Folder } from "@react95/icons";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import remarkGfm from "remark-gfm";
 import * as Posts from "../../../assets/posts";
 import { Shortcut } from "../../../components";
+import { ShortcutGrid } from "../../../utils/styledComponents";
 import classes from "./Devlogs.module.css";
+
+// TODO This can be done and exported form the Posts directory. It can be made into a proper object to not have to break it up into Object.keys and Object.values
+const postsTextValues = Object.values(Posts);
 
 const handleButtonClick = (e: React.MouseEvent<HTMLLIElement>) =>
   alert(e.currentTarget.value);
 
 const MODAL_PROPS = {
   className: classes.Window,
-  width: "550",
-  height: "500",
   defaultPosition: {
     x: 0,
     y: 20,
   },
-  // buttons: [
-  //   { value: "Ok", onClick: handleButtonClick },
-  //   { value: "Cancel", onClick: handleButtonClick },
-  // ],
   menu: [
     {
       name: "File",
@@ -69,7 +67,30 @@ export const Devlogs: React.FC<any> = () => {
         padding="0px 5px"
         overflowY="auto"
       >
-        <ReactMarkdown children={Posts.Devlog_0} remarkPlugins={[remarkGfm]} />
+        <ShortcutGrid>
+          {Object.keys(Posts).map((key, index) => (
+            <Shortcut
+              title={key}
+              icon={FileText}
+              modalProps={MODAL_PROPS}
+              textColor="#000"
+            >
+              <Frame
+                bg="white"
+                boxShadow="in"
+                h="100%"
+                w="100%"
+                padding="0px 5px"
+                overflowY="auto"
+              >
+                <ReactMarkdown
+                  children={postsTextValues[index]}
+                  remarkPlugins={[remarkGfm]}
+                />
+              </Frame>
+            </Shortcut>
+          ))}
+        </ShortcutGrid>
       </Frame>
     </Shortcut>
   );

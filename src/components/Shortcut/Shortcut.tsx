@@ -15,12 +15,13 @@ const Wrapper = styled.div`
 
   span {
     text-align: center;
-    color: white;
+    color: ${(props) => props.color || "white"};
   }
 `;
 
 interface IShortcut {
   children: ReactElement;
+  textColor?: string;
   icon: IIconComponent;
   title: string;
   modalProps?: Omit<ModalProps, "closeModal" | "icon" | "title">;
@@ -28,6 +29,7 @@ interface IShortcut {
 
 export const Shortcut: React.FC<IShortcut> = ({
   children,
+  textColor = "white",
   icon: Icon,
   modalProps = {},
   title,
@@ -47,7 +49,7 @@ export const Shortcut: React.FC<IShortcut> = ({
         </Modal>
       )}
 
-      <Wrapper onClick={openModal}>
+      <Wrapper onClick={openModal} color={textColor}>
         <Icon variant="32x32_4" />
         <span>{title}</span>
       </Wrapper>
