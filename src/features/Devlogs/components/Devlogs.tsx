@@ -74,6 +74,7 @@ export const Devlogs: React.FC<any> = () => {
               icon={FileText}
               modalProps={MODAL_PROPS}
               textColor="#000"
+              key={`${key}-${index}`}
             >
               <Frame
                 bg="white"

@@ -32,7 +32,18 @@ interface IModal extends Omit<ModalProps, "closeModal" | "icon" | "title"> {
   children: ReactElement;
 }
 
-export function useShortcut({ icon: Icon, title }: IUseShortcut) {
+export interface IUseShortcutResult {
+  isModalOpen: boolean;
+  closeModal: () => void;
+  openModal: () => void;
+  ShortcutComponent: React.FC<IShortcut>;
+  ModalComponent: React.FC<IModal>;
+}
+
+export function useShortcut({
+  icon: Icon,
+  title,
+}: IUseShortcut): IUseShortcutResult {
   const { isModalOpen, closeModal, openModal } = useModalToggle(false);
 
   const ShortcutComponent: React.FC<IShortcut> = ({ textColor }) => (
