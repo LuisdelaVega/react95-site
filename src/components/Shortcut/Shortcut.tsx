@@ -21,10 +21,10 @@ const Wrapper = styled.div`
 
 interface IShortcut {
   children: ReactElement;
-  textColor?: string;
   icon: IIconComponent;
-  title: string;
   modalProps?: Omit<ModalProps, "closeModal" | "icon" | "title">;
+  textColor?: string;
+  title: string;
 }
 
 export const Shortcut: React.FC<IShortcut> = ({

@@ -9,6 +9,7 @@ interface IAgent {
   hide: () => void;
   play: (animationName: string) => void;
   show: () => void;
+  speak: (message: string) => void;
   stop: () => void;
 }
 
