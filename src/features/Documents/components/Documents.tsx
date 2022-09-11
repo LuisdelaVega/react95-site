@@ -5,10 +5,7 @@ import { ReactNode, useMemo, useState } from "react";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import remarkGfm from "remark-gfm";
 import * as Devlogs from "../../../assets/Devlogs";
-import { Shortcut } from "../../../components";
 import { TreeDirectory } from "../../../components/TreeDirectory";
-import { TreeFrame } from "../../../components/TreeDirectory/TreeFrame";
-import { COMMON_MODAL_PROPS } from "../../../utils/constants";
 
 // TODO This can be done and exported form the Posts directory. It can be made into a proper object to not have to break it up into Object.keys and Object.values
 const postsTextValues = Object.values(Devlogs);
