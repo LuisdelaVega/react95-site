@@ -19,12 +19,10 @@ function App() {
       <GlobalStyle />
       <Desktop>
         <Documents />
-        <Documents />
-        <Documents />
         <Button
           onClick={() => {
             agentRef.current?.play(CLIPPY_ANIMATIONS.Print);
-            agentRef.current?.speak("ℍ𝕖𝕝𝕝𝕠 𝕥𝕖𝕩𝕥 𝕤𝕥𝕣𝕚𝕟𝕘 𝕞𝕪 𝕠𝕝𝕕 𝕗𝕣𝕚𝕖𝕟𝕕.");
+            agentRef.current?.speak("Hello, world!");
           }}
         >
           Hello Clippy!

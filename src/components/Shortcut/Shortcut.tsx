@@ -3,7 +3,7 @@ import { ModalProps } from "@react95/core/@types/Modal/Modal";
 import styled from "@xstyled/styled-components";
 import { ReactElement } from "react";
 import { useModalToggle } from "../../hooks/useModalToggle";
-import { IIconComponent } from "../../types/interfaces";
+import { IIconComponent, IModalProps } from "../../types/interfaces";
 
 const Wrapper = styled.div`
   display: flex;
@@ -19,10 +19,10 @@ const Wrapper = styled.div`
   }
 `;
 
-interface IShortcut {
+export interface IShortcut {
   children: ReactElement;
   icon: IIconComponent;
-  modalProps?: Omit<ModalProps, "closeModal" | "icon" | "title">;
+  modalProps?: IModalProps;
   textColor?: string;
   title: string;
 }
