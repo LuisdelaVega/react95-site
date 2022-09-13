@@ -25,7 +25,7 @@ export const Window: React.FC<IWindow> = ({
   title,
 }) => {
   // TODO This is a placeholder for buttons
-  const handleButtonClick = (e: React.MouseEvent<HTMLLIElement>) =>
+  const handleButtonClick = (e: React.MouseEvent<HTMLLIElement>): void =>
     alert(e.currentTarget.value);
 
   return (
@@ -71,7 +71,9 @@ export const Window: React.FC<IWindow> = ({
         padding="0px 5px"
         overflowY="auto"
       >
-        <ReactMarkdown children={Posts.Devlog_0} remarkPlugins={[remarkGfm]} />
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {Posts.DEVLOG_0}
+        </ReactMarkdown>
       </Frame>
     </Modal>
   );

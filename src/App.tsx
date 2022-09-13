@@ -11,7 +11,7 @@ const Desktop = styled(ShortcutGrid)`
   height: calc(100vh - 30px);
 `;
 
-function App() {
+const App: React.FC = () => {
   const { agentRef } = useClippy(AGENT_NAMES.Clippy);
 
   return (
@@ -31,6 +31,6 @@ function App() {
       <TaskBar />
     </ThemeProvider>
   );
-}
+};
 
 export default App;

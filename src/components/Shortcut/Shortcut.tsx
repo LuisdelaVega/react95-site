@@ -1,5 +1,4 @@
 import { Modal } from "@react95/core";
-import { ModalProps } from "@react95/core/@types/Modal/Modal";
 import styled from "@xstyled/styled-components";
 import { ReactElement } from "react";
 import { useModalToggle } from "../../hooks/useModalToggle";
@@ -15,7 +14,7 @@ const Wrapper = styled.div`
 
   span {
     text-align: center;
-    color: ${(props) => props.color || "white"};
+    color: ${(props) => props.color ?? "white"};
   }
 `;
 

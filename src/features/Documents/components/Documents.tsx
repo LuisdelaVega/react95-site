@@ -10,7 +10,7 @@ import { TreeDirectory } from "../../../components/TreeDirectory";
 // TODO This can be done and exported form the Posts directory. It can be made into a proper object to not have to break it up into Object.keys and Object.values
 const postsTextValues = Object.values(Devlogs);
 
-export const Documents: React.FC<any> = () => {
+export const Documents: React.FC = () => {
   const [content, setContent] = useState<ReactNode>();
 
   const treeNodes: TreeProps = useMemo(
@@ -61,10 +61,9 @@ export const Documents: React.FC<any> = () => {
             icon: <Tree.icons.FILE_TEXT />,
             onClick: () =>
               setContent(
-                <ReactMarkdown
-                  children={postsTextValues[id]}
-                  remarkPlugins={[remarkGfm]}
-                />
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {postsTextValues[id]}
+                </ReactMarkdown>
               ),
           })),
         },
@@ -82,7 +81,7 @@ export const Documents: React.FC<any> = () => {
         },
       ],
     }),
-    [setContent]
+    []
   );
 
   return (

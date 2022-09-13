@@ -1,3 +1,3 @@
-import Devlog_0 from "./Devlog_0";
+import DEVLOG_0 from "./Devlog_0";
 
-export { Devlog_0 };
+export { DEVLOG_0 };

@@ -3,7 +3,7 @@ import { WindowsExplorer } from "@react95/icons";
 import { useModalToggle } from "../hooks/useModalToggle";
 import { Window } from "./Window";
 
-export const TaskBar = () => {
+export const TaskBar: React.FC = () => {
   const {
     isModalOpen: isWinExplorerOpen,
     openModal: openWinExplorer,
