@@ -4,11 +4,9 @@ import { Folder } from "@react95/icons";
 import { ReactNode, useMemo, useState } from "react";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import remarkGfm from "remark-gfm";
-import * as Devlogs from "../../../assets/Devlogs";
-import { TreeDirectory } from "../../../components/TreeDirectory";
 
-// TODO This can be done and exported form the Posts directory. It can be made into a proper object to not have to break it up into Object.keys and Object.values
-const postsTextValues = Object.values(Devlogs);
+import { getDevlogContent, getDevlogTitles } from "../../../assets/Devlogs";
+import { TreeDirectory } from "./../../../components/TreeDirectory";
 
 export const Documents: React.FC = () => {
   const [content, setContent] = useState<ReactNode>();
@@ -55,14 +53,14 @@ export const Documents: React.FC = () => {
         {
           id: 3,
           label: "Devlogs",
-          children: Object.keys(Devlogs).map((label, id) => ({
-            label,
+          children: getDevlogTitles().map((label, id) => ({
+            label: label.replace("_", " "),
             id,
             icon: <Tree.icons.FILE_TEXT />,
             onClick: () =>
               setContent(
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                  {postsTextValues[id]}
+                  {getDevlogContent(label)}
                 </ReactMarkdown>
               ),
           })),

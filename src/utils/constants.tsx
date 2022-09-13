@@ -1,4 +1,5 @@
 import { List } from "@react95/core";
+
 import { IModalProps } from "../types/interfaces";
 import classes from "./Window.module.css";
 

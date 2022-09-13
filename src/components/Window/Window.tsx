@@ -2,6 +2,7 @@
 import { Frame, List, Modal } from "@react95/core";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+
 import * as Posts from "../../assets/Devlogs";
 import { IIconComponent } from "../../types/interfaces";
 import classes from "./Window.module.css";

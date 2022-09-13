@@ -1,5 +1,6 @@
 import { List, TaskBar as React95TaskBar } from "@react95/core";
 import { WindowsExplorer } from "@react95/icons";
+
 import { useModalToggle } from "../hooks/useModalToggle";
 import { Window } from "./Window";
 

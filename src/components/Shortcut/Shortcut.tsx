@@ -1,6 +1,7 @@
 import { Modal } from "@react95/core";
 import styled from "@xstyled/styled-components";
 import { ReactElement } from "react";
+
 import { useModalToggle } from "../../hooks/useModalToggle";
 import { IIconComponent, IModalProps } from "../../types/interfaces";
 

@@ -1,6 +1,7 @@
 import { Button, GlobalStyle, ThemeProvider } from "@react95/core";
 import "@react95/icons/icons.css";
 import styled from "@xstyled/styled-components";
+
 import { TaskBar } from "./components";
 import { Documents } from "./features/Documents";
 import { AGENT_NAMES, useClippy } from "./hooks";
