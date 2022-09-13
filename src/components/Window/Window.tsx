@@ -3,7 +3,6 @@ import { Frame, List, Modal } from "@react95/core";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-import * as Posts from "../../assets/Devlogs";
 import { IIconComponent } from "../../types/interfaces";
 import classes from "./Window.module.css";
 
@@ -72,9 +71,7 @@ export const Window: React.FC<IWindow> = ({
         padding="0px 5px"
         overflowY="auto"
       >
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-          {Posts.DEVLOG_0}
-        </ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>Test</ReactMarkdown>
       </Frame>
     </Modal>
   );
