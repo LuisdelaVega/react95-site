@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   height: 100%;
   display: grid;
   column-gap: 5px;
-  grid-template: 1fr / 25% 1fr;
+  grid-template: 1fr / minmax(115px, 25%) 1fr;
   > div:first-child > ul {
     margin-top: 0px;
   }
