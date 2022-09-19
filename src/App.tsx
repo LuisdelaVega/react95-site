@@ -1,12 +1,18 @@
 import { Button, GlobalStyle, ThemeProvider } from "@react95/core";
 import "@react95/icons/icons.css";
-import styled from "@xstyled/styled-components";
+import styled, { createGlobalStyle } from "@xstyled/styled-components";
 
 import { TaskBar } from "./components";
 import { Documents } from "./features/Documents";
 import { AGENT_NAMES, useClippy } from "./hooks";
 import { CLIPPY_ANIMATIONS } from "./utils/clippyAnimations";
 import { ShortcutGrid } from "./utils/styledComponents";
+
+const TestGlobalStyles = createGlobalStyle`
+  body {
+    overflow-y: hidden;
+  }
+`;
 
 const Desktop = styled(ShortcutGrid)`
   height: calc(100vh - 30px);
@@ -15,7 +21,7 @@ const Desktop = styled(ShortcutGrid)`
     position: fixed;
     bottom: calc(50vh - 150px + 30px);
     right: calc(50vw - 375px);
-    content: url('./img/alert.png');
+    content: url("./img/alert.png");
     z-index: -1;
   }
 `;
@@ -26,7 +32,9 @@ const App: React.FC = () => {
   return (
     <ThemeProvider>
       <GlobalStyle />
+      <TestGlobalStyles />
       <Desktop>
+        <Documents />
         <Documents />
         <Button
           onClick={() => {
