@@ -19,8 +19,10 @@ const Wrapper = styled.div`
   }
 `;
 
+// TODO Add a `disabed` prop that removes the onClick and turns the icons grey or transparent
 export interface IShortcut {
   children: ReactElement;
+  defaultOpen?: boolean;
   icon: IIconComponent;
   modalProps?: IModalProps;
   textColor?: string;
@@ -29,12 +31,15 @@ export interface IShortcut {
 
 export const Shortcut: React.FC<IShortcut> = ({
   children,
-  textColor = "white",
+  defaultOpen,
+  textColor,
   icon: Icon,
   modalProps = {},
   title,
 }) => {
-  const { isModalOpen, closeModal, openModal } = useModalToggle(false);
+  const { isModalOpen, closeModal, openModal } = useModalToggle(
+    defaultOpen ?? false
+  );
 
   return (
     <>
