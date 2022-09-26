@@ -1,6 +1,10 @@
-import { Button, GlobalStyle, ThemeProvider } from "@react95/core";
+import {
+  Button,
+  GlobalStyle as React95GlobalStyle,
+  ThemeProvider,
+} from "@react95/core";
 import "@react95/icons/icons.css";
-import styled from "@xstyled/styled-components";
+import styled, { createGlobalStyle } from "@xstyled/styled-components";
 
 import { TaskBar } from "./components";
 import { Documents } from "./features/Documents";
@@ -15,8 +19,14 @@ const Desktop = styled(ShortcutGrid)`
     position: fixed;
     bottom: calc(50vh - 150px + 30px);
     right: calc(50vw - 375px);
-    content: url('./img/alert.png');
+    content: url("./img/alert.png");
     z-index: -1;
+  }
+`;
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    overflow: hidden;
   }
 `;
 
@@ -25,6 +35,7 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider>
+      <React95GlobalStyle />
       <GlobalStyle />
       <Desktop>
         <Documents />
