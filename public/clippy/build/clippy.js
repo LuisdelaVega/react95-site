@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 var clippy = {};
 
 /******
@@ -23,7 +24,7 @@ clippy.Agent = function (path, data, sounds) {
 
 clippy.Agent.prototype = {
 
-    /**************************** API ************************************/
+    /** ************************** API ************************************/
 
     /***
      *
@@ -164,7 +165,7 @@ clippy.Agent.prototype = {
         if (this._el.css('top') === 'auto' || !this._el.css('left') === 'auto') {
             var left = $(window).width() * 0.8;
             var top = ($(window).height() + $(document).scrollTop()) * 0.8;
-            this._el.css({top:top, left:left});
+            this._el.css({top, left});
         }
 
         this.resume();
@@ -174,10 +175,15 @@ clippy.Agent.prototype = {
     /***
      *
      * @param {String} text
+     * @param {Boolean} hold
+     * @param {Function} callback
      */
-    speak:function (text, hold) {
+    speak:function (text, hold, callback) {
         this._addToQueue(function (complete) {
             this._balloon.speak(complete, text, hold);
+        }, this);
+        this._addToQueue(function (complete) {
+            if (typeof callback === "function") callback(complete)
         }, this);
     },
 
@@ -246,7 +252,7 @@ clippy.Agent.prototype = {
         return this.play(anim);
     },
 
-    /**************************** Utils ************************************/
+    /** ************************** Utils ************************************/
 
     /***
      *
@@ -270,16 +276,16 @@ clippy.Agent.prototype = {
         var r = Math.round((180 * Math.atan2(a, b)) / Math.PI);
 
         // Left and Right are for the character, not the screen :-/
-        if (-45 <= r && r < 45) return 'Right';
-        if (45 <= r && r < 135) return 'Up';
-        if (135 <= r && r <= 180 || -180 <= r && r < -135) return 'Left';
-        if (-135 <= r && r < -45) return 'Down';
+        if (r >= -45 && r < 45) return 'Right';
+        if (r >= 45 && r < 135) return 'Up';
+        if (r >= 135 && r <= 180 || r >= -180 && r < -135) return 'Left';
+        if (r >= -135 && r < -45) return 'Down';
 
         // sanity check
         return 'Top';
     },
 
-    /**************************** Queue and Idle handling ************************************/
+    /** ************************** Queue and Idle handling ************************************/
 
     /***
      * Handle empty queue.
@@ -332,7 +338,7 @@ clippy.Agent.prototype = {
         return r[idx];
     },
 
-    /**************************** Events ************************************/
+    /** ************************** Events ************************************/
 
     _setupEvents:function () {
         $(window).on('resize', $.proxy(this.reposition, this));
@@ -374,7 +380,7 @@ clippy.Agent.prototype = {
             left = wW - bW - m;
         }
 
-        this._el.css({left:left, top:top});
+        this._el.css({left, top});
         // reposition balloon
         this._balloon.reposition();
     },
@@ -385,7 +391,7 @@ clippy.Agent.prototype = {
     },
 
 
-    /**************************** Drag ************************************/
+    /** ************************** Drag ************************************/
 
     _startDrag:function (e) {
         // pause animations
@@ -443,7 +449,7 @@ clippy.Agent.prototype = {
         this._queue.queue(func);
     },
 
-    /**************************** Pause and Resume ************************************/
+    /** ************************** Pause and Resume ************************************/
 
     pause:function () {
         this._animator.pause();
@@ -729,7 +735,7 @@ clippy.Balloon.prototype = {
                 break;
         }
 
-        this._balloon.css({top:top, left:left});
+        this._balloon.css({top, left});
         this._balloon.addClass('clippy-' + side);
     },
 
@@ -903,8 +909,8 @@ clippy.load._loadSounds = function (name, path) {
     dfd = clippy.load._sounds[name] = $.Deferred();
 
     var audio = document.createElement('audio');
-    var canPlayMp3 = !!audio.canPlayType && "" != audio.canPlayType('audio/mpeg');
-    var canPlayOgg = !!audio.canPlayType && "" != audio.canPlayType('audio/ogg; codecs="vorbis"');
+    var canPlayMp3 = !!audio.canPlayType && audio.canPlayType('audio/mpeg') != "";
+    var canPlayOgg = !!audio.canPlayType && audio.canPlayType('audio/ogg; codecs="vorbis"') != "";
 
     if (!canPlayMp3 && !canPlayOgg) {
         dfd.resolve({});

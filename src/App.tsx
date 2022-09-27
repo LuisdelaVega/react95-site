@@ -41,8 +41,15 @@ const App: React.FC = () => {
         <Documents />
         <Button
           onClick={() => {
-            agentRef.current?.play(CLIPPY_ANIMATIONS.Print);
-            agentRef.current?.speak("Hello, world!");
+            // agentRef.current?.play(CLIPPY_ANIMATIONS.Print);
+            agentRef.current?.speak(
+              "Hello! I'm Actor_0.8.2alpha, and on behalf of everyone at CompCorp Inc. I want to give you a warm welcome.",
+              false,
+              (complete) => {
+                alert("Hey, that's pretty good!");
+                complete();
+              }
+            );
           }}
         >
           Hello Clippy!
